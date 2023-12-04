@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <style>
+        body {
+            max-width: 60em;
+            margin: 5;
+            color: #000;
+            background-color: #fff;
+          }
+    </style>
+</head>
+<body>
+<script> 
+function dispFile(contents) {
+    document.getElementById('contents').innerHTML=contents
+  }
+
+function clickElem(elem) {
+      // Thx user1601638 on Stack Overflow (6/6/2018 - https://stackoverflow.com/questions/13405129/javascript-create-and-save-file )
+      var eventMouse = document.createEvent("MouseEvents")
+      eventMouse.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+      elem.dispatchEvent(eventMouse)
+  }
+function openFile(func) {
+      readFile = function(e) {
+          var file = e.target.files[0];
+          if (!file) {
+              return;
+          }
+          var reader = new FileReader();
+          reader.onload = function(e) {
+              var contents = e.target.result;
+              fileInput.func(contents)
+              document.body.removeChild(fileInput)
+          }
+          reader.readAsText(file)
+      }
+      fileInput = document.createElement("input")
+      fileInput.type='file'
+      fileInput.style.display='none'
+      fileInput.onchange=readFile
+      fileInput.func=func
+      document.body.appendChild(fileInput)
+      fileInput.click()
+  }
+</script>
+Click the button then choose a file to see its contents displayed below.
+<button onclick="openFile(dispFile)">Open a file</button>
+<pre id="contents"></pre>
+
+<div class="article">
+    <div>
+<p>I grant permission for Scout _____________________________________ to attend the following
+Scout Troop Activity __________________________________ on _____________ to_______________.
+</p>
+<p>
+     I will see that he is properly equipped for the outing, including the “Ten Essentials-Plus” as appropriate. I understand that the adult leader
+    will enforce reasonable safety precautions, however, I will not hold Boy Scout Troop 680 or any leader connected with that troop responsible in
+    case of an accident or injury to the above named Scout.
+</p>
+<p>
+     The undersigned also authorizes the SCOUTMASTER or TOUR LEADER or such substitute as the Scoutmaster or Tour Leader designates
+    as agent for the undersigned to consent to any medical, dental, or surgical diagnosis or treatment, or hospital care for the above named minor
+    which is deemed advisable by and to be rendered by a licensed physician or surgeon. This authorization will remain effective for the duration
+    (including transportation to and from) of the activity listed above.
+</p>
+<p>
+     This permission slip must be returned to the designated Tour Leader by _____________________.
+</p>   
+
+<p>Date ________________ Phone # ____________________</p>
+
+<p>
+    (Parent /Guardian Signature)
+    Will the Parent/Guardian be going on the above activity? Yes_______ No _______ Alternate Phone# ____________________
+    Alternate Contact ____________________________________ Phone # _______________________
+</p>
+
+<p>
+MEDICAL INFORMATION: Plan name: _______________________________________ Group #: __________________________
+
+    Member #________________________ Doctor’s name: _________________________ Phone# __________________________
+    The adult leaders on the outing are not in the position to administer medication. Should medical treatment be required, the doctor will need to
+    be informed of any medical condition, allergy, or use of medication by your son. All such conditions must be noted below. If no medical
+    conditions or use of medications exist, state “NONE”.
+</p>
+
+<p>
+    Allergies:________________________________________________ Medications: ___________________________________________
+    Special
+    Conditions:_____________________________________________________________________________________________________
+    _______________________________________________________________________________________________________________
+
+</p>    
+    </div>
+</div>
+(If more room is needed, continue on the back of this form, at the bottom of the sheet)
+
+</body>
+
+</html>
