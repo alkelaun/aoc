@@ -19,8 +19,6 @@ def read_input():
     return my_input
 
 def solve(data):
-    '''
-    '''
     value=0
     for line in data:
         row_wins = 0 
