@@ -46,7 +46,6 @@ def solve2(data):
         row = list(filter(None,row))
         index = row.index("|")
         card, winning_numbers, numbers_found = int(row[1].strip(':')), row[2:index], row[index+1:]
-        print(f"{card=} {counter[card]=}")
         counter[card] += 1
         for number in numbers_found:
             if number in winning_numbers:
@@ -54,9 +53,7 @@ def solve2(data):
         for y in range(counter[card]):
             for x in range(card+1, card+row_wins+1):
                 counter[x]+=1
-        pprint(f"end: {card=} {counter=}")    
 
-    pprint(counter)
     total = sum(counter.values())   
     return total
 
